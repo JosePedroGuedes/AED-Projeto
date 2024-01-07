@@ -16,7 +16,7 @@ def clique_login():
 def clique_register():
     janela.destroy()
     print("Fazer Registo")
-    caminho_arquivo2 = os.path.abspath("./register.py")  #erro n redireciona para a pastade fazer registro
+    caminho_arquivo2 = os.path.abspath("./register.py")  
     os.system(f'python "{caminho_arquivo2}"')
 
 
