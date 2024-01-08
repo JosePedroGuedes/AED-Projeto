@@ -16,7 +16,7 @@ def button_save():
         messagebox.showwarning("Empty Fields", "Please fill in all the fields.")
         return
 
-    with open ("accounts.txt", "r") as f:
+    with open ("AED-Projeto/Files/accounts.txt", "r") as f:
         existing_data = f.read()
 
     if f"Username: {username_info}\nEmail: {email_info}\nPassword: {password_info}\n" in existing_data:
@@ -24,7 +24,7 @@ def button_save():
         return
 
     # Escrever as informações no arquivo
-    with open("accounts.txt", "a") as f:
+    with open("AED-Projeto/Files/accounts.txt", "a") as f:
         f.write(f"Username: {username_info}\nEmail: {email_info}\nPassword: {password_info}\n\n")
 
     print("Account created")

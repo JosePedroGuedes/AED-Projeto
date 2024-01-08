@@ -20,7 +20,7 @@ def eliminar_categoria():
 
         atualizar_combobox()
 
-        mensagem = "A categoria " + categoria_a_eliminar + " foi eleminada com sucesso"
+        mensagem = "A categoria " + categoria_a_eliminar + " foi eliminada com sucesso"
 
         messagebox.showinfo("Mensagem", mensagem)
 
@@ -44,7 +44,7 @@ def exibir_ficheiro():
         conteudo = f.read()
         print(conteudo)
         caixa_texto.config(state='normal')
-        caixa_texto.delete('1.0', tk.END)  # Limpa o conteúdo atual
+        caixa_texto.delete('1.0', tk.END)
         caixa_texto.insert(tk.END, conteudo)
         caixa_texto.config(state='disabled')
 
@@ -54,28 +54,24 @@ def voltar():
     caminho_arquivo = os.path.abspath("AED-Projeto/Code/admin.py")
     os.system(f'python "{caminho_arquivo}"')
 
-
-# Criar a janela
 janela = tk.Tk()
 janela.title("Eliminar Categoria")
 
-# Adicionar um widget para o título
 titulo = tk.Label(janela, text="Escolha a categoria que quer apagar:")
-titulo.pack(padx=20, pady=20)
+titulo.pack(padx=20, pady=5)
 
-# Adicionar um combobox para escolher a categoria
 combo_categoria = ttk.Combobox(janela, state='readonly', width=40)
 combo_categoria.pack(pady=10)
 
-# Adicionar uma caixa de texto
+categorias = tk.Label(janela, text="Categorias:")
+categorias.pack(padx=20, pady=5)
+
 caixa_texto = tk.Text(janela, wrap=tk.WORD, width=40, height=10, state='disabled')
 caixa_texto.pack(padx=10, pady=10)
 
-# Adicionar um botão para iniciar o processo de eliminação
 botao_eliminar = tk.Button(janela, text="Eliminar Categoria", command=eliminar_categoria)
 botao_eliminar.pack(pady=10)
 
-# Adicionar um botão para iniciar o processo de eliminação
 botao_eliminar = tk.Button(janela, text="Voltar", command=voltar)
 botao_eliminar.pack(pady=10)
 

@@ -2,10 +2,9 @@ import tkinter as tk
 import os
 
 def categorias(pagina):
-    
     pagina += "_categorias"
     janela.destroy()
-    caminho_arquivo = os.path.abspath(f"Code/{pagina}.py")
+    caminho_arquivo = os.path.abspath(f"AED-Projeto/Code/{pagina}.py")
     print(caminho_arquivo)
     os.system(f'python "{caminho_arquivo}"')
 

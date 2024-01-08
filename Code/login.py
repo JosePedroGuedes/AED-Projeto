@@ -7,7 +7,7 @@ janela.title("My Photos Login")
 janela.config(bg="white")
 
 
-file = open("accounts.txt", "w")
+file = open("AED-Projeto/Files/accounts.txt", "w")
 
 def clique_login():
     print("Fazer Login")
@@ -16,7 +16,7 @@ def clique_login():
 def clique_register():
     janela.destroy()
     print("Fazer Registo")
-    caminho_arquivo2 = os.path.abspath("./register.py")  
+    caminho_arquivo2 = os.path.abspath("AED-Projeto/Code/register.py")  
     os.system(f'python "{caminho_arquivo2}"')
 
 
