@@ -5,7 +5,7 @@ def salvar_texto():
     texto = caixa_texto.get("1.0", "end-1c")  # Caixa de texto
 
     if (texto != ""):
-        with open("Files/categorias.txt", "a") as arquivo:
+        with open("AED-Projeto/Files/categorias.txt", "a") as arquivo:
             arquivo.write("\n" + texto)  # Adicionar o texto
 
         print("Texto salvo com sucesso!")
@@ -14,7 +14,7 @@ def salvar_texto():
 
 def voltar():
     janela.destroy()
-    caminho_arquivo = os.path.abspath("Code/admin.py")
+    caminho_arquivo = os.path.abspath("AED-Projeto/Code/admin.py")
     os.system(f'python "{caminho_arquivo}"')
 
 # Janela principal
