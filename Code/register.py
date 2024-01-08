@@ -60,7 +60,6 @@ lblUsername.place(x=111, y=100)
 lblUsername.config(bg='white')
 
 username = tkinter.Entry(janela)
-username.insert(0, "Your Name")
 username.pack(padx=10, pady=10)
 username.bind("<FocusIn>", limpar_username)
 
@@ -69,7 +68,6 @@ lblEmail.place(x=135, y=140)
 lblEmail.config(bg='white')
 
 email_entry = tkinter.Entry(janela)
-email_entry.insert(0, "Your Email")
 email_entry.pack(padx=10, pady=10)
 email_entry.bind("<FocusIn>", limpar_email)
 
@@ -78,7 +76,6 @@ lblPassword.place(x=113, y=180)
 lblPassword.config(bg='white')
 
 password_entry = tkinter.Entry(janela)
-password_entry.insert(0, "Your Password")
 password_entry.pack(padx=10, pady=10)
 password_entry.bind("<FocusIn>", limpar_password)
 

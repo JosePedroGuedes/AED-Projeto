@@ -1,3 +1,0 @@
-admin,admin@gmail.com,admin54321
-edi,ed.sousa.jogos@gmail.com,edi5525
-ze,ze@gmail.com,66341

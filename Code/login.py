@@ -1,5 +1,6 @@
 import tkinter
 import os
+from tkinter import messagebox
 
 janela = tkinter.Tk()
 janela.geometry("500x300")
@@ -7,9 +8,28 @@ janela.title("My Photos Login")
 janela.config(bg="white")
 
 
-file = open("AED-Projeto/Files/accounts.txt", "w")
+def button_login():
+    
+    email_info = email.get()
+    password_info = password_entry.get()
 
-def clique_login():
+    # Verificar se algum dos campos estÃ¡ vazio
+    if not (email_info and password_info):  
+        messagebox.showwarning("Empty Fields", "Please fill in all the fields.")
+        return
+
+    with open ("AED-Projeto/Files/accounts.txt", "r") as f:
+        existing_data = f.read()
+        print(existing_data)
+
+        if f"Email: {email_info}\nPassword: {password_info}\n" in existing_data:
+            messagebox.showinfo("Info", "You have successfully login.")
+
+        else:
+            messagebox.showwarning("Warning", "This account doesn't exist. Register First.")
+            return
+
+
     print("Fazer Login")
 
 
@@ -21,7 +41,7 @@ def clique_register():
 
 
 def limpar_email(event):
-    if email.get() == "Seu E-mail":
+    if email.get() == "Your E-mail":
         email.delete(0, tkinter.END)
 
 
@@ -43,7 +63,6 @@ lblEmail.place(x=111, y=100)
 lblEmail.config(bg='white')
 
 email = tkinter.Entry(janela,)
-email.insert(0, "Seu E-mail")
 email.pack(padx=10, pady=10)
 email.bind("<FocusIn>", limpar_email)
 
@@ -52,12 +71,11 @@ lblPassword.place(x=111, y=138)
 lblPassword.config(bg='white')
 
 password_entry = tkinter.Entry(janela)
-password_entry.insert(0, "Palavra Pass")
 password_entry.pack(padx=10, pady=10)
 password_entry.bind("<FocusIn>", limpar_password)  
 
-button = tkinter.Button(janela, text="Login", command=clique_login)
-button.pack(padx=4, pady=10)
+button_login = tkinter.Button(janela, text="Login", command=button_login)
+button_login.pack(padx=4, pady=10)
 
 button_register = tkinter.Button(janela, text="Register", command=clique_register)
 button_register.pack(padx=7, pady=10)
