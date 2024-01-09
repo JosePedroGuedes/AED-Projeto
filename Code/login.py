@@ -13,7 +13,7 @@ def button_login():
     email_info = email.get()
     password_info = password_entry.get()
 
-    # Verificar se algum dos campos estÃ¡ vazio
+    # Verificar se algum dos campos está vazio
     if not (email_info and password_info):  
         messagebox.showwarning("Empty Fields", "Please fill in all the fields.")
         return
@@ -29,7 +29,6 @@ def button_login():
             messagebox.showwarning("Warning", "This account doesn't exist. Register First.")
             return
 
-
     print("Fazer Login")
 
 
@@ -39,15 +38,6 @@ def clique_register():
     caminho_arquivo2 = os.path.abspath("AED-Projeto/Code/register.py")  
     os.system(f'python "{caminho_arquivo2}"')
 
-
-def limpar_email(event):
-    if email.get() == "Your E-mail":
-        email.delete(0, tkinter.END)
-
-
-def limpar_password(event):
-    if password_entry.get() == "Palavra Pass":
-        password_entry.delete(0, tkinter.END)
 
 
 title = tkinter.Label(janela, text='My Photos', font=('Arial', 18))
@@ -64,15 +54,13 @@ lblEmail.config(bg='white')
 
 email = tkinter.Entry(janela,)
 email.pack(padx=10, pady=10)
-email.bind("<FocusIn>", limpar_email)
 
 lblPassword = tkinter.Label(janela, text="Password:")
 lblPassword.place(x=111, y=138)
 lblPassword.config(bg='white')
 
 password_entry = tkinter.Entry(janela)
-password_entry.pack(padx=10, pady=10)
-password_entry.bind("<FocusIn>", limpar_password)  
+password_entry.pack(padx=10, pady=10) 
 
 button_login = tkinter.Button(janela, text="Login", command=button_login)
 button_login.pack(padx=4, pady=10)

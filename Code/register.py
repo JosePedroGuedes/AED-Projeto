@@ -1,4 +1,5 @@
 import tkinter
+import os
 from tkinter import messagebox
 
 janela = tkinter.Tk()
@@ -29,6 +30,10 @@ def button_save():
 
     print("Account created")
     messagebox.showinfo("", "Your account has been successfully created.")
+
+    janela.destroy()
+    caminho_arquivo2 = os.path.abspath("AED-Projeto/Code/login.py")  
+    os.system(f'python "{caminho_arquivo2}"')
 
 
 def limpar_username(event):
