@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog
+import os
 from tkinter import messagebox
 
 def carregar_categorias():
@@ -30,6 +30,7 @@ def editar_categoria():
             salvar_categorias(categorias)
             atualizar_lista_categorias()
             messagebox.showinfo("Mensagem", "Categoria editada com sucesso.")
+            caixa_edicao.delete(1.0, tk.END)
         else:
             messagebox.showwarning("Aviso", "Por favor, insira um nome de categoria válido.")
 
@@ -37,6 +38,11 @@ def atualizar_lista_categorias():
     lista_categorias.delete(0, tk.END)
     for categoria in categorias:
         lista_categorias.insert(tk.END, categoria)
+
+def voltar():
+    janela.destroy()
+    caminho_arquivo = os.path.abspath("AED-Projeto/Code/admin.py")
+    os.system(f'python "{caminho_arquivo}"')
 
 categorias = carregar_categorias()
 
@@ -63,5 +69,8 @@ caixa_edicao.pack(pady=10)
 
 botao_editar = tk.Button(frame_edicao, text="Editar Categoria", command=editar_categoria)
 botao_editar.pack(pady=10)
+
+botao_voltar = tk.Button(janela, text="Voltar", command=voltar)
+botao_voltar.pack(pady=10)
 
 janela.mainloop()
