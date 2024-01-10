@@ -1,6 +1,7 @@
 import tkinter
 import os
 from tkinter import messagebox
+import re
 
 janela = tkinter.Tk()
 janela.geometry("500x300")
@@ -11,6 +12,8 @@ def button_save():
     username_info = username.get()
     email_info = email_entry.get()
     password_info = password_entry.get()
+
+    padrao_email = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
 
     # Verificar se algum dos campos está vazio
     if not (username_info and email_info and password_info):
@@ -24,16 +27,21 @@ def button_save():
         messagebox.showwarning("Duplicate Entry", "This account already exists.")
         return
 
-    # Escrever as informações no arquivo
-    with open("AED-Projeto/Files/accounts.txt", "a") as f:
-        f.write(f"Username: {username_info}\nEmail: {email_info}\nPassword: {password_info}\n\n")
+    if re.match(padrao_email, email_info):
+        with open("AED-Projeto/Files/accounts.txt", "a") as f:
+            f.write(f"Username: {username_info}\nEmail: {email_info}\nPassword: {password_info}\n\n")
+            print(f"Username: {username_info}\nEmail: {email_info}\nPassword: {password_info}\n\n")
 
-    print("Account created")
-    messagebox.showinfo("", "Your account has been successfully created.")
+        print("Account created")
+        messagebox.showinfo("", "Your account has been successfully created.")
 
-    janela.destroy()
-    caminho_arquivo2 = os.path.abspath("AED-Projeto/Code/login.py")  
-    os.system(f'python "{caminho_arquivo2}"')
+        janela.destroy()
+        caminho_arquivo2 = os.path.abspath("AED-Projeto/Code/login.py")  
+        os.system(f'python "{caminho_arquivo2}"')
+        
+    else:
+        messagebox.showwarning("Aviso", "Por favor, insira um e-mail válido.")
+        return    
 
 
 def limpar_password(event):
