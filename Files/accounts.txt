@@ -1,4 +1,24 @@
-Username: 123
-Email: 123@gmail.com
+Username: 3333
+Email: 333@gmail.com
 Password: 123
+
+Username: Joao
+Email: joao@gmail.com
+Password: 12345
+
+Username: Andre
+Email: andre@gmail.com
+Password: 321
+
+Username: Bruna
+Email: bruna@gmail.com
+Password: ola123
+
+Username: Edi
+Email: edi@gmail.com
+Password: edi552
+
+Username: Ze2
+Email: ze@gmail.com2
+Password: 55252
 
