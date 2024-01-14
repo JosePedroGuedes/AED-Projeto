@@ -12,11 +12,13 @@ def atualizar_lista_contas():
         lista_contas.insert(tk.END, username)
 
 def exibir_detalhes_conta(event):
-    index = lista_contas.curselection()
-    if index:
+    selection = lista_contas.curselection()
+    if selection:
+        index = selection[0]
         username_selecionado = lista_contas.get(index)
         detalhes_conta = obter_detalhes_conta(username_selecionado)
         preencher_campos_detalhes(detalhes_conta)
+        username_var.set(username_selecionado)
 
 def obter_detalhes_conta(username):
     with open('AED-Projeto/Files/accounts.txt', 'r') as arquivo:
@@ -47,9 +49,9 @@ def preencher_campos_detalhes(detalhes_conta):
     entry_password.insert(0, linhas[2].replace('Password: ', ''))
 
 def salvar_alteracoes():
-    index = lista_contas.curselection()
-    if index:
-        username_selecionado = lista_contas.get(index)
+    username_selecionado = username_var.get()  # Obter o valor do StringVar
+    print(username_var.get() )
+    if username_selecionado:
         novo_detalhes_conta = (
             f"Username: {entry_username.get()}\n"
             f"Email: {entry_email.get()}\n"
@@ -109,7 +111,10 @@ label_titulo.pack()
 
 lista_contas = tk.Listbox(frame_lista, selectmode=tk.SINGLE, height=10, width=20)
 lista_contas.pack(pady=10)
-lista_contas.bind('<ButtonRelease-1>', lambda event: exibir_detalhes_conta(event))
+lista_contas.bind('<<ListboxSelect>>', lambda event: exibir_detalhes_conta(event))
+
+# Criar o StringVar para armazenar o valor do username selecionado
+username_var = tk.StringVar()
 
 frame_detalhes = tk.Frame(frame_principal)
 frame_detalhes.pack(side=tk.LEFT, padx=10)
