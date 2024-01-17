@@ -9,25 +9,24 @@ janela.config(bg="white")
 
 
 def button_login():
-    
     email_info = email.get()
     password_info = password_entry.get()
 
     # Verificar se algum dos campos está vazio
-    if not (email_info and password_info):  
+    if not (email_info and password_info):
         messagebox.showwarning("Empty Fields", "Please fill in all the fields.")
         return
 
-    with open ("AED-Projeto/Files/accounts.txt", "r") as f:
+    with open("AED-Projeto/Files/accounts.txt", "r") as f:
         existing_data = f.read()
-        print(existing_data)
 
         if f"Email: {email_info}\nPassword: {password_info}\n" in existing_data:
-            messagebox.showinfo("Info", "You have successfully login.")
+            messagebox.showinfo("Info", "You have successfully logged in.")
             janela.destroy()
-            caminho_arquivo2 = os.path.abspath("AED-Projeto/Code/mainpage.py")  
-            os.system(f'python "{caminho_arquivo2}"')
 
+            # Abrir a nova janela de perfil e passar informações de login
+            caminho_arquivo_perfil = os.path.abspath("AED-Projeto/Code/perfil.py")
+            os.system(f'python "{caminho_arquivo_perfil}" "{email_info}" "{password_info}"')
         else:
             messagebox.showwarning("Warning", "This account doesn't exist. Register First.")
             return

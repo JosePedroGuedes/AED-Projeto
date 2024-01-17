@@ -19,5 +19,5 @@ Email: bruna@gmail.com
 Password: ola123
 
 Username: Admin
-Email: Admin@gmail.com      #Admin acess
+Email: Admin@gmail.com
 Password: Admin
