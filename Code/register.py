@@ -5,7 +5,7 @@ import re
 
 janela = tkinter.Tk()
 janela.geometry("500x300")
-janela.title("My Photos Login")
+janela.title("My Photos Register")
 janela.config(bg="white")
 
 def button_save():

@@ -24,6 +24,9 @@ def button_login():
 
         if f"Email: {email_info}\nPassword: {password_info}\n" in existing_data:
             messagebox.showinfo("Info", "You have successfully login.")
+            janela.destroy()
+            caminho_arquivo2 = os.path.abspath("AED-Projeto/Code/mainpage.py")  
+            os.system(f'python "{caminho_arquivo2}"')
 
         else:
             messagebox.showwarning("Warning", "This account doesn't exist. Register First.")
@@ -59,7 +62,7 @@ lblPassword = tkinter.Label(janela, text="Password:")
 lblPassword.place(x=111, y=138)
 lblPassword.config(bg='white')
 
-password_entry = tkinter.Entry(janela)
+password_entry = tkinter.Entry(janela, show='*')
 password_entry.pack(padx=10, pady=10) 
 
 button_login = tkinter.Button(janela, text="Login", command=button_login)

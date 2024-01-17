@@ -2,3 +2,6 @@ Username: 123
 Email: 123@gmail.com
 Password: 123
 
+Username: Admin
+Email: Admin@gmail.com      #Admin acess
+Password: Admin
