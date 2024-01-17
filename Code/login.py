@@ -26,7 +26,7 @@ def button_login():
 
             # Abrir a nova janela de perfil e passar informações de login
             caminho_arquivo_perfil = os.path.abspath("AED-Projeto/Code/perfil.py")
-            os.system(f'python "{caminho_arquivo_perfil}" "{email_info}" "{password_info}"')
+            os.system(f'python "{caminho_arquivo_perfil}" "{email_info}"')
         else:
             messagebox.showwarning("Warning", "This account doesn't exist. Register First.")
             return
