@@ -3,14 +3,14 @@ import os
 from tkinter import font
 
 def categorias(pagina):
-    pagina += "_accounts"
+    pagina += "_categorias"
     janela.destroy()
     caminho_arquivo = os.path.abspath(f"AED-Projeto/Code/{pagina}.py")
     print(caminho_arquivo)
     os.system(f'python "{caminho_arquivo}"')
 
 def utilizadores(pagina):
-    pagina += "_categorias"
+    pagina += "_accounts"
     janela.destroy()
     caminho_arquivo = os.path.abspath(f"AED-Projeto/Code/{pagina}.py")
     print(caminho_arquivo)
