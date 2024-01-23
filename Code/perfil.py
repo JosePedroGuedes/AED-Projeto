@@ -76,7 +76,7 @@ class ProfilePage(tk.Tk):
 
     def nome_usuario(self, email):
         try:
-            with open('AED-Projeto/Files/accounts.txt', 'r') as f:
+            with open('Files/accounts.txt', 'r') as f:
                 linhas = f.readlines()
 
             for i, linha in enumerate(linhas):
@@ -98,7 +98,7 @@ class ProfilePage(tk.Tk):
 
         if file_path:
             # Define o caminho de destino
-            destination_directory = os.path.join("AED-Projeto", "Images", "Perfil")
+            destination_directory = os.path.join("Images", "Perfil")
             
             # Obtém o nome do arquivo a partir do self.username
             username_filename = self.username.replace(" ", "_")  # Substitui espaços por underscores para evitar problemas no nome do arquivo
@@ -129,7 +129,7 @@ class ProfilePage(tk.Tk):
         if not image_path:
             # Se não houver um caminho definido, procura uma imagem específica na pasta
             username_filename = self.username.replace(" ", "_")
-            candidate_path = os.path.join("AED-Projeto", "Images", "Perfil", f"{username_filename}_perfil.png")
+            candidate_path = os.path.join("Images", "Perfil", f"{username_filename}_perfil.png")
             print(candidate_path + " ww")
             
             # Verifica se o arquivo candidato existe
@@ -137,7 +137,7 @@ class ProfilePage(tk.Tk):
                 image_path = candidate_path
             else:
                 # Se não existir, usa a imagem padrão
-                image_path = "AED-Projeto/Images/Perfil/semfoto.png"
+                image_path = "Images/Perfil/semfoto.png"
 
         # Cria o objeto PhotoImage e configura a exibição
         photo = tk.PhotoImage(file=image_path)

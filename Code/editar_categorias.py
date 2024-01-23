@@ -4,14 +4,14 @@ from tkinter import messagebox
 
 def carregar_categorias():
     try:
-        with open('AED-Projeto/Files/categorias.txt', 'r') as arquivo:
+        with open('Files/categorias.txt', 'r') as arquivo:
             categorias = [linha.strip() for linha in arquivo.readlines()]
         return categorias
     except FileNotFoundError:
         return []
 
 def salvar_categorias(categorias):
-    with open('AED-Projeto/Files/categorias.txt', 'w') as arquivo:
+    with open('Files/categorias.txt', 'w') as arquivo:
         arquivo.write('\n'.join(categorias))
 
 def selecionar_categoria(event):
@@ -41,7 +41,7 @@ def atualizar_lista_categorias():
 
 def voltar():
     janela.destroy()
-    caminho_arquivo = os.path.abspath("AED-Projeto/Code/admin.py")
+    caminho_arquivo = os.path.abspath("Code/admin.py")
     os.system(f'python "{caminho_arquivo}"')
 
 categorias = carregar_categorias()

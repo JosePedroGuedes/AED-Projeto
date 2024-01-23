@@ -3,7 +3,7 @@ from tkinter import messagebox
 import os
 
 def categoria_existe(texto):
-    with open('AED-Projeto/Files/categorias.txt', 'r') as arquivo:
+    with open('Files/categorias.txt', 'r') as arquivo:
         categorias_existentes = [linha.strip() for linha in arquivo.readlines()]
     return texto in categorias_existentes
 
@@ -14,7 +14,7 @@ def salvar_texto():
         if categoria_existe(texto):
             messagebox.showinfo("Mensagem", f"A categoria {texto} já existe.")
         else:
-            with open("AED-Projeto/Files/categorias.txt", "a") as arquivo:
+            with open("Files/categorias.txt", "a") as arquivo:
                 arquivo.write("\n" + texto)
                 print("Texto salvo com sucesso!")
 
@@ -29,7 +29,7 @@ def salvar_texto():
         messagebox.showinfo("Mensagem", "Não deixe a categoria em branco")
 
 def exibir_ficheiro():
-    with open('AED-Projeto/Files/categorias.txt', 'r') as arquivo:
+    with open('Files/categorias.txt', 'r') as arquivo:
         conteudo = arquivo.read()
 
         categorias.config(state='normal')
@@ -39,7 +39,7 @@ def exibir_ficheiro():
 
 def voltar():
     janela.destroy()
-    caminho_arquivo = os.path.abspath("AED-Projeto/Code/admin.py")
+    caminho_arquivo = os.path.abspath("Code/admin.py")
     os.system(f'python "{caminho_arquivo}"')
 
 janela = tk.Tk()

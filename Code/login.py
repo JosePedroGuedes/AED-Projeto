@@ -17,7 +17,7 @@ def button_login():
         messagebox.showwarning("Empty Fields", "Please fill in all the fields.")
         return
 
-    with open("AED-Projeto/Files/accounts.txt", "r") as f:
+    with open("Files/accounts.txt", "r") as f:
         existing_data = f.read()
 
         if f"Email: {email_info}\nPassword: {password_info}\n" in existing_data:
@@ -25,7 +25,7 @@ def button_login():
             janela.destroy()
 
             # Abrir a nova janela de perfil e passar informações de login
-            caminho_arquivo_perfil = os.path.abspath("AED-Projeto/Code/perfil.py")
+            caminho_arquivo_perfil = os.path.abspath("Code/perfil.py")
             os.system(f'python "{caminho_arquivo_perfil}" "{email_info}"')
         else:
             messagebox.showwarning("Warning", "This account doesn't exist. Register First.")
@@ -37,7 +37,7 @@ def button_login():
 def clique_register():
     janela.destroy()
     print("Fazer Registo")
-    caminho_arquivo2 = os.path.abspath("AED-Projeto/Code/register.py")  
+    caminho_arquivo2 = os.path.abspath("Code/register.py")  
     os.system(f'python "{caminho_arquivo2}"')
 
 

@@ -3,7 +3,7 @@ from tkinter import messagebox
 import os
 
 def atualizar_lista_contas():
-    with open('AED-Projeto/Files/accounts.txt', 'r') as arquivo:
+    with open('Files/accounts.txt', 'r') as arquivo:
         contas = [linha.strip() for linha in arquivo.readlines() if "Username: " in linha]
     
     lista_contas.delete(0, tk.END)
@@ -21,7 +21,7 @@ def exibir_detalhes_conta(event):
         username_var.set(username_selecionado)
 
 def obter_detalhes_conta(username):
-    with open('AED-Projeto/Files/accounts.txt', 'r') as arquivo:
+    with open('Files/accounts.txt', 'r') as arquivo:
         linhas = arquivo.readlines()
         detalhes_conta = ""
         capturar = False
@@ -63,10 +63,10 @@ def salvar_alteracoes():
         limpar_campos()
 
 def atualizar_arquivo(username_antigo, novo_detalhes_conta):
-    with open('AED-Projeto/Files/accounts.txt', 'r') as arquivo:
+    with open('Files/accounts.txt', 'r') as arquivo:
         linhas = arquivo.readlines()
 
-    with open('AED-Projeto/Files/accounts.txt', 'w') as arquivo:
+    with open('Files/accounts.txt', 'w') as arquivo:
         atualizando = False
         for linha in linhas:
             if f"Username: {username_antigo}" in linha:
@@ -94,7 +94,7 @@ def limpar_campos():
 
 def voltar():
     janela.destroy()
-    caminho_arquivo = os.path.abspath("AED-Projeto/Code/admin.py")
+    caminho_arquivo = os.path.abspath("Code/admin.py")
     os.system(f'python "{caminho_arquivo}"')
 
 janela = tk.Tk()

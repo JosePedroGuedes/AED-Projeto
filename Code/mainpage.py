@@ -13,7 +13,7 @@ janela.config(bg="white")
 
 
 
-file_path = "AED-Projeto/Files/categorias.txt"
+file_path = "Files/categorias.txt"
 
 with open(file_path, "r") as f:
     categories = [line.strip() for line in f.readlines()]

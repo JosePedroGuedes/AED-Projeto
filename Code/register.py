@@ -20,7 +20,7 @@ def button_save():
         messagebox.showwarning("Empty Fields", "Please fill in all the fields.")
         return
 
-    with open ("AED-Projeto/Files/accounts.txt", "r") as f:
+    with open ("Files/accounts.txt", "r") as f:
         existing_data = f.read()
 
     if f"Username: {username_info}\nEmail: {email_info}\nPassword: {password_info}\n" in existing_data:
@@ -28,7 +28,7 @@ def button_save():
         return
 
     if re.match(padrao_email, email_info):
-        with open("AED-Projeto/Files/accounts.txt", "a") as f:
+        with open("Files/accounts.txt", "a") as f:
             f.write(f"Username: {username_info}\nEmail: {email_info}\nPassword: {password_info}\n\n")
             print(f"Username: {username_info}\nEmail: {email_info}\nPassword: {password_info}\n\n")
 
@@ -36,7 +36,7 @@ def button_save():
         messagebox.showinfo("", "Your account has been successfully created.")
 
         janela.destroy()
-        caminho_arquivo2 = os.path.abspath("AED-Projeto/Code/login.py")  
+        caminho_arquivo2 = os.path.abspath("Code/login.py")  
         os.system(f'python "{caminho_arquivo2}"')
         
     else:

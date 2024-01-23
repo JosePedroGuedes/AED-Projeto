@@ -8,7 +8,7 @@ def eliminar_conta():
     frase = "Escolha o usuário que deseja eliminar"
 
     if username_a_eliminar != frase:
-        with open('AED-Projeto/Files/accounts.txt', 'r') as f:
+        with open('Files/accounts.txt', 'r') as f:
             linhas = f.readlines()
 
         novas_linhas = []
@@ -21,7 +21,7 @@ def eliminar_conta():
             if linha.strip() == "":
                 capturando_conta = False
 
-        with open('AED-Projeto/Files/accounts.txt', 'w') as f:
+        with open('Files/accounts.txt', 'w') as f:
             f.writelines(novas_linhas)
 
         atualizar_combobox()
@@ -33,7 +33,7 @@ def eliminar_conta():
 
 def atualizar_combobox():
     frase = "Escolha o usuário que deseja eliminar"
-    with open('AED-Projeto/Files/accounts.txt', 'r') as f:
+    with open('Files/accounts.txt', 'r') as f:
         usuarios = [linha.split(": ")[1].strip() for linha in f.readlines() if "Username: " in linha]
 
     combo_username['values'] = usuarios
@@ -42,7 +42,7 @@ def atualizar_combobox():
     exibir_ficheiro()
 
 def exibir_ficheiro():
-    with open('AED-Projeto/Files/accounts.txt', 'r') as f:
+    with open('Files/accounts.txt', 'r') as f:
         conteudo = f.read()
         conteudo = conteudo[:-2]
         print(conteudo)
@@ -53,7 +53,7 @@ def exibir_ficheiro():
 
 def voltar():
     janela.destroy()
-    caminho_arquivo = os.path.abspath("AED-Projeto/Code/admin.py")
+    caminho_arquivo = os.path.abspath("Code/admin.py")
     os.system(f'python "{caminho_arquivo}"')
 
 janela = tk.Tk()

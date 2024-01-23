@@ -10,12 +10,12 @@ def eliminar_categoria():
 
     if(categoria_a_eliminar != frase):
 
-        with open('AED-Projeto/Files/categorias.txt', 'r') as f:
+        with open('Files/categorias.txt', 'r') as f:
             linhas = f.readlines()
 
         linhas = [linha for linha in linhas if linha.strip() != categoria_a_eliminar.strip()]
 
-        with open('AED-Projeto/Files/categorias.txt', 'w') as f:
+        with open('Files/categorias.txt', 'w') as f:
             f.writelines(linhas)
 
         atualizar_combobox()
@@ -30,7 +30,7 @@ def eliminar_categoria():
 
 def atualizar_combobox():
     frase = "Escolha a categoria que deseja eliminar"
-    with open('AED-Projeto/Files/categorias.txt', 'r') as f:
+    with open('Files/categorias.txt', 'r') as f:
         categorias = [linha.strip() for linha in f.readlines()]
 
     combo_categoria['values'] = categorias
@@ -40,7 +40,7 @@ def atualizar_combobox():
 
 
 def exibir_ficheiro():
-    with open('AED-Projeto/Files/categorias.txt', 'r') as f:
+    with open('Files/categorias.txt', 'r') as f:
         conteudo = f.read()
         print(conteudo)
         caixa_texto.config(state='normal')
@@ -51,7 +51,7 @@ def exibir_ficheiro():
 
 def voltar():
     janela.destroy()
-    caminho_arquivo = os.path.abspath("AED-Projeto/Code/admin.py")
+    caminho_arquivo = os.path.abspath("Code/admin.py")
     os.system(f'python "{caminho_arquivo}"')
 
 janela = tk.Tk()
