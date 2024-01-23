@@ -14,6 +14,8 @@ class ProfilePage(tk.Tk):
         self.email = email
         self.profile_picture_path = tk.StringVar()
 
+        self.username = self.nome_usuario(email)
+
         self.create_widgets()
 
     def create_widgets(self):
@@ -36,7 +38,7 @@ class ProfilePage(tk.Tk):
         email_entry.grid(row=1, column=1, padx=10, pady=5, sticky="w")
 
         # Preencher informações do usuário
-        username_entry.insert(tk.END, "Nome de Exemplo")
+        username_entry.insert(tk.END, self.username)
         email_entry.insert(tk.END, self.email)
 
         # Foto de Perfil
@@ -70,21 +72,40 @@ class ProfilePage(tk.Tk):
         notifications_text = tk.Text(notifications_frame, height=10, width=50)
         notifications_text.pack(pady=10, fill="both", expand=True)
 
-        # Exibir a foto de perfil inicial
         self.show_profile_picture()
+
+    def nome_usuario(self, email):
+        try:
+            with open('AED-Projeto/Files/accounts.txt', 'r') as f:
+                linhas = f.readlines()
+
+            for i, linha in enumerate(linhas):
+                if f"Email: {email}" in linha:
+                    # Imprime a linha anterior (sem a parte "Username: ")
+                    if i > 0:
+                        previous_line = linhas[i - 1].replace("Username: ", "").strip()
+                        print(previous_line)
+                    # Extrai o nome de usuário da linha atual
+                    username = previous_line
+                    return username
+        except Exception as e:
+            print(f"Erro ao ler o arquivo de contas: {e}")
+
+
 
     def change_profile_picture(self):
         file_path = filedialog.askopenfilename(title="Escolher Foto de Perfil", filetypes=[("Imagens", "*.png;*.jpg;*.jpeg")])
 
         if file_path:
             # Define o caminho de destino
-            destination_directory = os.path.join("AED-Projeto", "Imagens", "Perfil")
+            destination_directory = os.path.join("AED-Projeto", "Images", "Perfil")
             
+            # Obtém o nome do arquivo a partir do self.username
+            username_filename = self.username.replace(" ", "_")  # Substitui espaços por underscores para evitar problemas no nome do arquivo
+            destination_path = os.path.join(destination_directory, f"{username_filename}_perfil.png")
+
             # Cria o diretório de destino se não existir
             os.makedirs(destination_directory, exist_ok=True)
-
-            # Constrói o caminho completo para a imagem de perfil
-            destination_path = os.path.join(destination_directory, "perfil_image.png")
 
             # Verifica se o arquivo de destino já existe
             if os.path.exists(destination_path):
@@ -100,13 +121,29 @@ class ProfilePage(tk.Tk):
             # Exibe a imagem
             self.show_profile_picture()
 
+
     def show_profile_picture(self):
         image_path = self.profile_picture_path.get()
+        print("Imagem: ", image_path)
 
-        if image_path:
-            photo = tk.PhotoImage(file=image_path)
-            self.profile_picture_display.config(image=photo)
-            self.profile_picture_display.image = photo
+        if not image_path:
+            # Se não houver um caminho definido, procura uma imagem específica na pasta
+            username_filename = self.username.replace(" ", "_")
+            candidate_path = os.path.join("AED-Projeto", "Images", "Perfil", f"{username_filename}_perfil.png")
+            print(candidate_path + " ww")
+            
+            # Verifica se o arquivo candidato existe
+            if os.path.exists(candidate_path):
+                image_path = candidate_path
+            else:
+                # Se não existir, usa a imagem padrão
+                image_path = "AED-Projeto/Images/Perfil/semfoto.png"
+
+        # Cria o objeto PhotoImage e configura a exibição
+        photo = tk.PhotoImage(file=image_path)
+        self.profile_picture_display.config(image=photo)
+        self.profile_picture_display.image = photo
+
 
     def add_album(self):
         # Função para adicionar um álbum à lista
@@ -117,11 +154,10 @@ class ProfilePage(tk.Tk):
         pass
 
 if __name__ == "__main__":
-    print("Olá")
     # Certificar-se de que há argumentos suficientes
     if len(argv) == 2:
         # Chamar a classe ProfilePage com o argumento adequado
         app = ProfilePage(argv[1])
         app.mainloop()
     else:
-        print("Só a partir do login")
+        print("Número incorreto de argumentos. Forneça o endereço de e-mail.")
