@@ -21,3 +21,7 @@ Password: ola123
 Username: Admin
 Email: Admin@gmail.com
 Password: Admin
+
+Username: 1
+Email: 1
+Password: 1

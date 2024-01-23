@@ -117,10 +117,11 @@ class ProfilePage(tk.Tk):
         pass
 
 if __name__ == "__main__":
+    print("Olá")
     # Certificar-se de que há argumentos suficientes
     if len(argv) == 2:
-        # Chamar a classe ProfilePage com os argumentos adequados
-        app = ProfilePage(argv[1], argv[2])
+        # Chamar a classe ProfilePage com o argumento adequado
+        app = ProfilePage(argv[1])
         app.mainloop()
     else:
-        print("So da apartir do login")
+        print("Só a partir do login")
