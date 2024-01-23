@@ -49,8 +49,10 @@ class ProfilePage(tk.Tk):
 
     def clique_profile(self):
         self.destroy()
-        print("Go to Profile")
-        caminho_arquivo2 = os.path.abspath("Code/perfil.py")
+        caminho_arquivo_perfil = os.path.abspath("Code/perfil.py")
+        print(f'python "{caminho_arquivo_perfil}" "{self.email}"')
+        os.system(f'python "{caminho_arquivo_perfil}" "{self.email}"')
+
 
 if __name__ == "__main__":
     # Certificar-se de que há argumentos suficientes
