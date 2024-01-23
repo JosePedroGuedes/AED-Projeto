@@ -24,9 +24,13 @@ def button_login():
             messagebox.showinfo("Info", "You have successfully logged in.")
             janela.destroy()
 
-            # Abrir a nova janela de perfil e passar informações de login
-            caminho_arquivo_perfil = os.path.abspath("Code/mainpage.py")
-            os.system(f'python "{caminho_arquivo_perfil}" "{email_info}"')
+            if email_info == "Admin@gmail.com":
+                caminho_arquivo_admin = os.path.abspath("Code/admin.py")
+                os.system(f'python "{caminho_arquivo_admin}"')
+            else:
+                # Abrir a nova janela de perfil e passar informações de login
+                caminho_arquivo_perfil = os.path.abspath("Code/mainpage.py")
+                os.system(f'python "{caminho_arquivo_perfil}" "{email_info}"')
         else:
             messagebox.showwarning("Warning", "This account doesn't exist. Register First.")
             return
