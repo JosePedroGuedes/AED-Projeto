@@ -70,12 +70,6 @@ class ProfilePage(tk.Tk):
         view_album_button = ttk.Button(albums_frame, text="Ver Álbum Selecionado", command=self.view_album)
         view_album_button.pack(pady=5)
 
-        # Notificações
-        notifications_frame = ttk.LabelFrame(self, text="Notificações")
-        notifications_frame.pack(padx=10, pady=10, fill="both", expand=True)
-
-        notifications_text = tk.Text(notifications_frame, height=10, width=50)
-        notifications_text.pack(pady=10, fill="both", expand=True)
 
         # Agora, chamamos show_profile_picture depois de preencher as entradas
         self.show_profile_picture()
